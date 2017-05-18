@@ -1,5 +1,12 @@
 $(document).foundation()
 
+$('span').bind('dblclick', function() {
+        $(this).attr('contentEditable', true);
+    }).blur(
+        function() {
+            $(this).attr('contentEditable', false);
+        });
+
 class Megaroster {
   constructor(listSelector) {
     this.studentList = document.querySelector(listSelector)

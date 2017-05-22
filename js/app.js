@@ -125,7 +125,28 @@ class Megaroster {
       .querySelector('button.move-down')
       .addEventListener('click', this.moveDown.bind(this, student))
 
+    li
+      .querySelector('[contentEditable]')
+      .addEventListener('blur', this.updateName.bind(this, student))
+
+     li
+      .querySelector('[contentEditable]')
+      .addEventListener('keypress', this.saveOnEnter.bind(this))
+
   }
+
+  saveOnEnter(ev) {
+    if(ev.keyCode === 13) {
+      ev.preventDefault()
+      ev.target.blur()
+    }
+  }
+
+  updateName(student,ev) {
+    student.name = ev.target.textContent
+    this.save()
+  }
+
 
   moveUp(student, ev) {
     const btn = ev.target
